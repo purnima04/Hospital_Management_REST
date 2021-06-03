@@ -1,8 +1,6 @@
 package com.banfico.hospital_management.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,8 +18,7 @@ public class About_patient {
     private String patient_emailId;
     @Column(name = "DOB")
     private Date patient_DOB;
-    @OneToOne
-    @JsonIgnore
-    @JoinColumn(name = "Patient_Id", nullable = false)
+    @OneToOne(targetEntity = Patient.class,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn(name = "PATIENT_ID")
     private Patient patient;
 }
