@@ -1,6 +1,6 @@
 package com.banfico.hospital_management.Controller;
 
-import com.banfico.hospital_management.Model.Hospital;
+import com.banfico.hospital_management.Entity.HospitalEntity;
 import com.banfico.hospital_management.Services.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,17 +15,17 @@ public class HospitalController {
     private HospitalService hospitalService;
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
-    public ResponseEntity<Hospital> getHospitals() {
+    public ResponseEntity<HospitalEntity> getHospitals() {
         try {
             //return this.hospitalService.getHospitals();
-            return new ResponseEntity<>(hospitalService.getHospital(), HttpStatus.CREATED);
+            return new ResponseEntity(hospitalService.getHospitals(), HttpStatus.CREATED);
         }catch (Exception exception){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @RequestMapping(value = "/details/{hospital_Id}", method = RequestMethod.GET)
-    public ResponseEntity<Hospital> getHospital(@PathVariable String hospital_Id){
+    public ResponseEntity<HospitalEntity> getHospital(@PathVariable String hospital_Id){
         try {
             //return this.hospitalService.getHospital(hospital_Id);
             return new ResponseEntity<>(hospitalService.getHospital(hospital_Id), HttpStatus.FOUND);
@@ -34,19 +34,19 @@ public class HospitalController {
         }
     }
     @RequestMapping(value = "/details", method = RequestMethod.POST)
-    public ResponseEntity<Hospital> addHospital(@RequestBody Hospital hospital){
+    public ResponseEntity<HospitalEntity> addHospital(@RequestBody HospitalEntity hospitalEntity){
         try {
             //return this.addHospital(hospital);
-            return new ResponseEntity<>(hospitalService.addHospital(hospital), HttpStatus.CREATED);
+            return new ResponseEntity<>(hospitalService.addHospital(hospitalEntity), HttpStatus.CREATED);
         }catch (Exception exception){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
     @RequestMapping(value = "/details", method = RequestMethod.PUT)
-    public ResponseEntity<Hospital> updateHospital(@RequestBody Hospital hospital){
+    public ResponseEntity<HospitalEntity> updateHospital(@RequestBody HospitalEntity hospitalEntity){
         try {
             //return this.updateHospital(hospital);
-            return new ResponseEntity<>(hospitalService.updateHospital(hospital), HttpStatus.OK);
+            return new ResponseEntity<>(hospitalService.updateHospital(hospitalEntity), HttpStatus.OK);
         }catch (Exception exception){
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
