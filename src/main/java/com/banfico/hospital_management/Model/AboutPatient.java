@@ -9,7 +9,7 @@ import java.util.Date;
 @MappedSuperclass
 public class AboutPatient {
     @Id
-    private long patient_id;
+    private String patient_id;
     private String patient_address;
     private String patient_gender;
     private String patient_emailId;
