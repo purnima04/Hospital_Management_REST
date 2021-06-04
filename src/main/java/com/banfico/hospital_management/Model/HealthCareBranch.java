@@ -6,15 +6,13 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @Data
-@Entity
+@MappedSuperclass
 public class HealthCareBranch {
     @Id
-    @Column(name = "BRANCH_CODE")
     private String branch_code;
-    @Column(name = "BRANCH_NAME")
     private String branch_name;
-    @Column(name = "BRANCH_FLOOR_NO")
     private int branch_floorNo;
 }
