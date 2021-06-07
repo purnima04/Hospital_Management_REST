@@ -3,6 +3,8 @@ package com.banfico.hospital_management.Entity;
 import com.banfico.hospital_management.Model.Doctor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +12,7 @@ import java.util.Set;
 @Table(name = "DOCTOR_TABLE")
 public class DoctorEntity extends Doctor {
     @Column(name = "DOCTOR_ID")
+    @NotNull(message = "Unauthorized to database")
     private String doctor_Id;
     @Column(name = "DOCTOR_NAME")
     private String doctor_name;
@@ -26,7 +29,7 @@ public class DoctorEntity extends Doctor {
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = HospitalEntity.class)
     @JoinColumn(name = "Hospital_Id")
     private HospitalEntity hospitalEntity;
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "Treatment",
             joinColumns = {@JoinColumn(name = "DOCTOR_ID")},

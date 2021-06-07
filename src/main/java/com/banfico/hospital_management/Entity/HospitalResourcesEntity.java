@@ -1,7 +1,6 @@
 package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.HospitalResources;
-
 import javax.persistence.*;
 
 @Entity
