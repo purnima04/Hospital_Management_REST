@@ -8,7 +8,7 @@ import javax.persistence.*;
 @MappedSuperclass
 public class BillGeneration {
     @Id
-    private long generatedId;
+    private String generatedId;
     private String patient_Id;
     private String doctor_Id;
     private double total_amount;

@@ -4,16 +4,16 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @MappedSuperclass
 public class Billing {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.SEQUENCE.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @GenericGenerator(name="Gen", strategy="foreign")
-    private long billId;
+    private String bill_Id= UUID.randomUUID().toString();
     private String medicine;
     private int quantity;
     private double unitValue;
-
 }
