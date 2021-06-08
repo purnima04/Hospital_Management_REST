@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/Hospital")
 public class HospitalController {
@@ -25,7 +27,7 @@ public class HospitalController {
     }
 
     @RequestMapping(value = "/details/{hospital_Id}", method = RequestMethod.GET)
-    public ResponseEntity<HospitalEntity> getHospital(@PathVariable String hospital_Id){
+    public ResponseEntity<HospitalEntity> getHospital(@Valid @PathVariable String hospital_Id){
         try {
             //return this.hospitalService.getHospital(hospital_Id);
             return new ResponseEntity<>(hospitalService.getHospital(hospital_Id), HttpStatus.FOUND);
@@ -36,14 +38,13 @@ public class HospitalController {
     @RequestMapping(value = "/details", method = RequestMethod.POST)
     public ResponseEntity<HospitalEntity> addHospital(@RequestBody HospitalEntity hospitalEntity){
         try {
-            //return this.addHospital(hospital);
             return new ResponseEntity<>(hospitalService.addHospital(hospitalEntity), HttpStatus.CREATED);
         }catch (Exception exception){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
     @RequestMapping(value = "/details", method = RequestMethod.PUT)
-    public ResponseEntity<HospitalEntity> updateHospital(@RequestBody HospitalEntity hospitalEntity){
+    public ResponseEntity<HospitalEntity> updateHospital(@Valid @RequestBody HospitalEntity hospitalEntity){
         try {
             //return this.updateHospital(hospital);
             return new ResponseEntity<>(hospitalService.updateHospital(hospitalEntity), HttpStatus.OK);
@@ -62,6 +63,5 @@ public class HospitalController {
         }catch (Exception exception){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
 }
