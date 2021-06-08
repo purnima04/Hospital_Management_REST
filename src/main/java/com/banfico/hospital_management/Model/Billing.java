@@ -10,10 +10,11 @@ import java.util.UUID;
 @MappedSuperclass
 public class Billing {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @GenericGenerator(name="Gen", strategy="foreign")
-    private String bill_Id= UUID.randomUUID().toString();
+    @GeneratedValue
+    private long bill_Id;
+    /*
     private String medicine;
     private int quantity;
     private double unitValue;
+     */
 }

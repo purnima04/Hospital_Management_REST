@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class HospitalResources {
     @Id
     private String resource_id;
+    /*
     private int bedsAvailable;
     private int bedsInUse;
+     */
 }

@@ -13,6 +13,8 @@ import javax.persistence.MappedSuperclass;
 public class HealthCareBranch {
     @Id
     private String branch_code;
+    /*
     private String branch_name;
     private int branch_floorNo;
+     */
 }
