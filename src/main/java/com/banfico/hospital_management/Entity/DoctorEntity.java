@@ -1,19 +1,16 @@
 package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.Doctor;
+import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
-
+@Data
 @Entity
 @Table(name = "DOCTOR_TABLE")
 public class DoctorEntity extends Doctor {
-    @Column(name = "DOCTOR_ID")
-    @NotNull(message = "Unauthorized to database")
-    private String doctor_Id;
     @Column(name = "DOCTOR_NAME")
     private String doctor_name;
     @Column(name = "DOCTOR_DESIGNATION")
@@ -22,17 +19,17 @@ public class DoctorEntity extends Doctor {
     private String doctor_degree;
     @Column(name = "DOCTOR_ADDRESS")
     private String doctor_address;
-    @Column(name = "DOCTER_MAIL_ID")
+    @Column(name = "DOCTOR_MAIL_ID")
     private String doctor_emailId;
     @Column(name = "DOCTOR_CONTACT_NO")
-    private long doctor_contactNo;
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = HospitalEntity.class)
+    private String doctor_contactNo;
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Hospital_Id")
     private HospitalEntity hospitalEntity;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "Treatment",
-            joinColumns = {@JoinColumn(name = "DOCTOR_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "PATIENT_ID")})
-    private Set<PatientEntity> patientEntity=new HashSet<>();
+            joinColumns = {@JoinColumn(name = "doctor_Id")},
+            inverseJoinColumns = {@JoinColumn(name = "patient_Id")})
+   Set<PatientEntity> patientEntity=new HashSet<PatientEntity>();
 }
