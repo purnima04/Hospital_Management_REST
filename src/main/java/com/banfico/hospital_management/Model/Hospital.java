@@ -7,5 +7,6 @@ import javax.persistence.*;
 @MappedSuperclass
 public class Hospital {
     @Id
-    private String hospital_Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long hospital_Id;
 }

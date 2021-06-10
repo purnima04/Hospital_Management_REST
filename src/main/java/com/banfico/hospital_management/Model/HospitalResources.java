@@ -9,9 +9,6 @@ import javax.persistence.*;
 @MappedSuperclass
 public class HospitalResources {
     @Id
-    private String resource_id;
-    /*
-    private int bedsAvailable;
-    private int bedsInUse;
-     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long resource_Id;
 }

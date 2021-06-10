@@ -7,8 +7,8 @@ import java.sql.Timestamp;
 
 @Data
 @MappedSuperclass
-public class Patient extends AuditEntity {
+public class Patient extends AuditEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long patient_Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long patient_Id;
 }
