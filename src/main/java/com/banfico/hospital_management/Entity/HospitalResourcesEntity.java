@@ -1,6 +1,7 @@
 package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.HospitalResources;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -12,10 +13,11 @@ public class HospitalResourcesEntity extends HospitalResources {
 
     @Column(name = "BEDS_AVAILABLE")
     private int bedsAvailable;
+
     @Column(name = "BEDS_IN_USE")
     private int bedsInUse;
-    @OneToOne(targetEntity = HospitalEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false, mappedBy = "hospitalResourcesEntity")
-    @JoinColumn(name = "HOSPITAL_ID")
-    @JsonIgnore
+
+    @OneToOne(targetEntity = HospitalEntity.class, cascade = CascadeType.ALL)
+    @JsonBackReference
     private HospitalEntity hospitalEntity;
 }

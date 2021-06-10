@@ -15,10 +15,12 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AuditEntity implements Serializable {
     private static final long serialVersionUID=1L;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATED_AT", nullable = false, updatable = false)
     @CreatedDate
     private Date created_at;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "MODIFIED_AT", nullable = false)
     @LastModifiedDate

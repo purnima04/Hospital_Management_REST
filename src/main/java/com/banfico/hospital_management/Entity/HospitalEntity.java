@@ -1,17 +1,19 @@
 package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.Hospital;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 @Data
 @Entity
 @Table(name = "HOSPITAL_TABLE")
 public class HospitalEntity extends Hospital {
-    @Column(name ="HOSPITAL_NAME")
+
+    @Column(name ="HOSPITAL_NAME", nullable = false)
     private String hospital_name;
 
     @Column(name = "HOSPITAL_ADDRESS")
@@ -23,13 +25,18 @@ public class HospitalEntity extends Hospital {
     @Column(name = "HOSPITAL_MAIL_ID")
     @Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "check your mail id")
     private String hospital_mailId;
-    @OneToOne(targetEntity = HospitalResourcesEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @JsonManagedReference
+    @OneToOne(targetEntity = HospitalResourcesEntity.class, mappedBy = "hospitalEntity", cascade = CascadeType.ALL)
     private HospitalResourcesEntity hospitalResourcesEntity;
 
-    @OneToMany(mappedBy = "hospitalEntity", cascade = {CascadeType.ALL})
-            // {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JsonManagedReference
+    @OneToOne(targetEntity = HealthCareBranchEntity.class, mappedBy = "hospitalEntity", cascade = CascadeType.ALL)
+    private HealthCareBranchEntity healthCareBranchEntity;
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = DoctorEntity.class)
+    @JoinColumn(name = "hospital_Id")
     private List<DoctorEntity> doctorEntity;
 
-    @OneToOne(targetEntity = HealthCareBranchEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private HealthCareBranchEntity healthCareBranchEntity;
+
 }
