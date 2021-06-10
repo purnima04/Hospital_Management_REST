@@ -10,7 +10,7 @@ import java.util.UUID;
 @MappedSuperclass
 public class Billing {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long bill_Id;
     /*
     private String medicine;

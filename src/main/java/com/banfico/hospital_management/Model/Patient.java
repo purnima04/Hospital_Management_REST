@@ -9,12 +9,6 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public class Patient extends AuditEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long patient_Id;
-    /*
-    private String patient_name;
-    private long patient_contactNumber;
-    private Timestamp patient_In;
-    private Timestamp patient_Out;
-     */
 }
