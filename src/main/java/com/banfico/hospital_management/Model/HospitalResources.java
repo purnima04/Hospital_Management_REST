@@ -9,6 +9,6 @@ import javax.persistence.*;
 @MappedSuperclass
 public class HospitalResources {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resource_Id;
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int resource_Id;
 }

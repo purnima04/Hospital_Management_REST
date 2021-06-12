@@ -10,6 +10,6 @@ import javax.persistence.*;
 @MappedSuperclass
 public class Doctor extends AuditEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctor_Id;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int doctor_Id;
 }

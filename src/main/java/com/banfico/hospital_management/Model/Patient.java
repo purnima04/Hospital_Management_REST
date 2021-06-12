@@ -9,6 +9,6 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public class Patient extends AuditEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patient_Id;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int patient_Id;
 }
