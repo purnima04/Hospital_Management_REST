@@ -20,6 +20,14 @@ import java.util.Set;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "patient_Id"
 )
+@JsonPropertyOrder({"patient_Id",
+        "patient_name",
+        "patient_In",
+        "patient_DOB",
+        "patient_contactNumber",
+        "patient_emailId",
+        "patient_gender",
+        "patient_address"})
 public class PatientEntity extends Patient {
     private static final String MY_TIME_ZONE="Asia/Kolkata";
 
@@ -33,7 +41,7 @@ public class PatientEntity extends Patient {
     private String patient_address;
 
     @Column(name = "PATIENT_GENDER")
-    private String patient_gender;
+    private Gender patient_gender;
 
     @NotNull
     @Email(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "check your mail id")
@@ -49,7 +57,7 @@ public class PatientEntity extends Patient {
     @CreatedDate
     private Date patient_In;
 
-    @ManyToMany(targetEntity = DoctorEntity.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(targetEntity = DoctorEntity.class, cascade = {CascadeType.REFRESH, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<DoctorEntity> doctorEntity;
 
     @OneToOne(targetEntity = BillingEntity.class, mappedBy = "patientEntity", cascade = CascadeType.ALL)

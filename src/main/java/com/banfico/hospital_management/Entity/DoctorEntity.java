@@ -3,6 +3,7 @@ package com.banfico.hospital_management.Entity;
 import com.banfico.hospital_management.Model.Doctor;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
@@ -18,6 +19,13 @@ import java.util.Set;
         property = "doctor_Id"
 )
 @Table(name = "DOCTOR_TABLE")
+@JsonPropertyOrder({"hospital_Id",
+        "hospital_name",
+        "hospital_address",
+        "hospital_emergencyNo",
+        "hospital_mailId",
+        "healthCareBranchEntity",
+        "hospitalResourcesEntity"})
 public class DoctorEntity extends Doctor {
     @Column(name = "DOCTOR_NAME")
     private String doctor_name;
@@ -37,15 +45,14 @@ public class DoctorEntity extends Doctor {
     @Column(name = "DOCTOR_CONTACT_NO")
     private String doctor_contactNo;
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private HospitalEntity hospitalEntity;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "Treatment",
             joinColumns = {@JoinColumn(name = "doctor_Id")},
             inverseJoinColumns = {@JoinColumn(name = "patient_Id")})
-
-   // @ManyToMany(targetEntity = PatientEntity.class, mappedBy = "doctorEntity", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    //@ManyToMany(targetEntity = PatientEntity.class, mappedBy = "doctorEntity", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private List<PatientEntity> patientEntity;
 }

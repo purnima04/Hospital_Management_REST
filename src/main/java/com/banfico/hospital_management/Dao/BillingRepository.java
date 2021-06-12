@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BillingRepository extends JpaRepository<BillingEntity, Long> {
+public interface BillingRepository extends JpaRepository<BillingEntity, Integer> {
 }

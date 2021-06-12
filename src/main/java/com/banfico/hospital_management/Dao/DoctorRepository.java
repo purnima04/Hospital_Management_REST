@@ -5,7 +5,9 @@ import com.banfico.hospital_management.Model.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface DoctorRepository extends JpaRepository<DoctorEntity, Long> {
+public interface DoctorRepository extends JpaRepository<DoctorEntity, Integer> {
 
 }
