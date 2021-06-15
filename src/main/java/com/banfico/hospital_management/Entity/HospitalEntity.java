@@ -27,6 +27,7 @@ public class HospitalEntity extends Hospital {
     private String hospital_address;
 
     @Column(name = "EMERGENCY_NO")
+    //@Pattern(regexp = "^[0-9]+$")
     private int hospital_emergencyNo;
 
     @Column(name = "HOSPITAL_MAIL_ID")
@@ -42,7 +43,8 @@ public class HospitalEntity extends Hospital {
     private HealthCareBranchEntity healthCareBranchEntity;
 
     @OneToMany(mappedBy = "hospitalEntity",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             targetEntity = DoctorEntity.class)
+    @JsonManagedReference
     private List<DoctorEntity> doctorEntity;
 }

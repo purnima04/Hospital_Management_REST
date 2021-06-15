@@ -1,6 +1,8 @@
 package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.Doctor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
@@ -41,8 +43,9 @@ public class DoctorEntity extends Doctor {
     @Column(name = "DOCTOR_CONTACT_NO")
     private String doctor_contactNo;
     //@JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = HospitalEntity.class)
+    @ManyToOne(cascade = CascadeType.PERSIST, targetEntity = HospitalEntity.class)
     @JoinColumn(name = "hospitalRef", referencedColumnName = "hospital_Id")
+    @JsonBackReference
     private HospitalEntity hospitalEntity;
 
     /*@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
@@ -53,8 +56,9 @@ public class DoctorEntity extends Doctor {
     //@ManyToMany(targetEntity = PatientEntity.class, mappedBy = "doctorEntity", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     */
     @OneToMany(mappedBy = "doctorEntity",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             targetEntity = PatientEntity.class)
+    @JsonManagedReference
     private List<PatientEntity> patientEntity;
 
 }

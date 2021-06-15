@@ -10,7 +10,8 @@ public class API_paths {
     public static final class hospitalPathCtrl {
         public static final String CTRL = BASE_PATH + HOSPITAL_PATH;
     }
-/*
+
+    /*
     public static final class patientPathCtrl {
         public static final String CTRL = BASE_PATH + PATIENT_PATH;
     }
@@ -18,6 +19,7 @@ public class API_paths {
     public static final class DoctorPathCtrl {
         public static final String CTRL = BASE_PATH + DOCTOR_PATH;
     }
+
     public static final class billPathCtrl {
         public static final String CTRL = BASE_PATH + BILL_PATH;
     }

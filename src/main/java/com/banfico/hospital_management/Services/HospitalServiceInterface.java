@@ -17,4 +17,6 @@ public interface HospitalServiceInterface{
     public List<HospitalEntity> findAll();
     public HospitalEntity update(int hospital_Id, HospitalEntity hospitalEntity);
     public String deleteHospital(int hospital_Id);
-}
+    //public HospitalEntity findByName(String hospital_name);
+
+    }

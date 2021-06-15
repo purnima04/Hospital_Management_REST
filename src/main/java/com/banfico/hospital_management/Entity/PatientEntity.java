@@ -57,8 +57,9 @@ public class PatientEntity extends Patient {
     private Date patient_In;
 
     //@ManyToMany(targetEntity = DoctorEntity.class, cascade = {CascadeType.REFRESH, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REFRESH})
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = DoctorEntity.class)
+    @ManyToOne(cascade = CascadeType.PERSIST, targetEntity = DoctorEntity.class)
     @JoinColumn(name = "doctorRef", referencedColumnName = "doctor_Id")
+    @JsonBackReference
     private DoctorEntity doctorEntity;
 
     //private List<DoctorEntity> doctorEntity;
