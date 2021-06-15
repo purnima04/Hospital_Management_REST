@@ -5,11 +5,11 @@ services:
       context: ""
       dockerfile: ./docker/tomcat/Dockerfile
     ports:
-      - "8080:8080"
+      - "8089:8080"
       - "18000:18000"
     image: itomcat-hospital-management:1.0
-    env_file:
-      - ./config.env
+    depends_on:
+      - cpostgres
   cpostgres:
     build:
       context: "./docker/postgres"

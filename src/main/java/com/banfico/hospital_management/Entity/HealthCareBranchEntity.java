@@ -1,20 +1,18 @@
 package com.banfico.hospital_management.Entity;
 
+import com.banfico.hospital_management.Entity.ENUM.Branches;
 import com.banfico.hospital_management.Model.HealthCareBranch;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 @Data
 @Entity
 @Table(name = "DEPARTMENT_TABLE")
 @JsonPropertyOrder({"branch_Id",
-                    "branch_name",
-                    "branch_floorNo"})
+        "branch_name",
+        "branch_floorNo"})
 public class HealthCareBranchEntity extends HealthCareBranch {
     @Column(name = "BRANCH_NAME")
     private Branches branch_name;

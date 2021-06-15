@@ -2,10 +2,9 @@ package com.banfico.hospital_management.Model;
 
 import com.banfico.hospital_management.Entity.AuditEntity;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @Data
 @MappedSuperclass

@@ -12,12 +12,12 @@ import java.util.List;
 @Entity
 @Table(name = "HOSPITAL_TABLE")
 @JsonPropertyOrder({"hospital_Id",
-                    "hospital_name",
-                    "hospital_address",
-                    "hospital_emergencyNo",
-                    "hospital_mailId",
-                    "healthCareBranchEntity",
-                    "hospitalResourcesEntity"})
+        "hospital_name",
+        "hospital_address",
+        "hospital_emergencyNo",
+        "hospital_mailId",
+        "healthCareBranchEntity",
+        "hospitalResourcesEntity"})
 public class HospitalEntity extends Hospital {
 
     @Column(name ="HOSPITAL_NAME", nullable = false)
@@ -41,9 +41,8 @@ public class HospitalEntity extends Hospital {
     @OneToOne(targetEntity = HealthCareBranchEntity.class, mappedBy = "hospitalEntity", cascade = CascadeType.ALL)
     private HealthCareBranchEntity healthCareBranchEntity;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = DoctorEntity.class)
-    @JoinColumn(name = "hospital_Id")
+    @OneToMany(mappedBy = "hospitalEntity",
+            cascade = CascadeType.ALL,
+            targetEntity = DoctorEntity.class)
     private List<DoctorEntity> doctorEntity;
-
-
 }

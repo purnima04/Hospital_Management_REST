@@ -1,8 +1,6 @@
-package com.banfico.hospital_management.Entity;
+package com.banfico.hospital_management.Entity.ENUM;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
-import javax.persistence.GeneratedValue;
 
 public enum Gender {
     MALE("Male"), FEMALE("Female"), OTHERS("Others");

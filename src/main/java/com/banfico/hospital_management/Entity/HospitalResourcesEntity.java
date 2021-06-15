@@ -2,7 +2,6 @@ package com.banfico.hospital_management.Entity;
 
 import com.banfico.hospital_management.Model.HospitalResources;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 

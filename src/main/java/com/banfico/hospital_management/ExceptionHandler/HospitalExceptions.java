@@ -4,7 +4,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,6 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RestControllerAdvice
 public class HospitalExceptions extends ResponseEntityExceptionHandler {
+
     @ExceptionHandler(HospitalNotFoundException.class)
     public ResponseEntity<Object> handleHospitalNotFoundException(
             HospitalNotFoundException ex, WebRequest request) {
@@ -66,10 +66,6 @@ public class HospitalExceptions extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException exception, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
-
-        ExceptionResponse exceptionResponse = new ExceptionResponse(exception.getMessage());
-        logger.error("--Application was Error : "+exception.getMessage());
-
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDate.now());
         body.put("status", status.value());
