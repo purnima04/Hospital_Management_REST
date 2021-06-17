@@ -1,6 +1,5 @@
-package com.banfico.hospital_management.ExceptionHandler.Hospital;
+package com.banfico.hospital_management.ExceptionHandler.Doctor;
 
-import com.banfico.hospital_management.ExceptionHandler.InvalidInputException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,49 +19,49 @@ import java.util.stream.Collectors;
 
 @RestController
 @RestControllerAdvice
-public class HospitalExceptions extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(HospitalNotFoundException.class)
-    public ResponseEntity<Object> handleHospitalNotFoundException(
-            HospitalNotFoundException ex, WebRequest request) {
+public class DoctorExceptions extends ResponseEntityExceptionHandler {
+    @ExceptionHandler(DoctorNotFoundException.class)
+    public ResponseEntity<Object> handleDoctorNotFoundException(
+            DoctorNotFoundException ex, WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("message", "Hospital not found");
+        body.put("message", "Doctor not found");
         body.put("Notes", "Try again");
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(NoHospitalDataFoundException.class)
-    public ResponseEntity<Object> handleNoDataFoundException(
-            NoHospitalDataFoundException ex, WebRequest request) {
+    @ExceptionHandler(NoDoctorDataFoundException.class)
+    public ResponseEntity<Object> handleNoDpctorDataFoundException(
+            NoDoctorDataFoundException ex, WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("message", "No hospital found");
+        body.put("message", "Doctor database is not available");
         body.put("Notes", "Try again");
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(HospitalIDException.class)
-    public ResponseEntity<Object> handleHospitalNameException(
-            HospitalIDException exception, WebRequest request) {
+    @ExceptionHandler(DoctorIDException.class)
+    public ResponseEntity<Object> handleDoctorNameException(
+            DoctorIDException exception, WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("message", "Recheck hospital ID");
+        body.put("message", "Recheck doctor ID");
         body.put("Notes", "Try again");
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(InvalidInputException.class)
+    /*@ExceptionHandler(InvalidInputException.class)
     protected ResponseEntity<String> handleInvalidInput(InvalidInputException exception){
 
         return ResponseEntity
                 .badRequest()
                 .body("Invalid Input");
     }
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException exception, HttpHeaders headers,
@@ -82,5 +81,4 @@ public class HospitalExceptions extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
-
 }

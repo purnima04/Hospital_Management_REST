@@ -1,7 +1,7 @@
-package com.banfico.hospital_management.ExceptionHandler;
+package com.banfico.hospital_management.ExceptionHandler.Hospital;
 
-public class HospitalNameException extends RuntimeException{
-    public HospitalNameException(String hospital_name){
-        super("Hospital with "+hospital_name+" cannot be found");
+public class HospitalIDException extends RuntimeException{
+    public HospitalIDException(int hospital_Id){
+        super("Hospital with ID : "+hospital_Id+" cannot be found");
     }
 }

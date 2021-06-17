@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<HospitalEntity, Integer> {
-    //HospitalEntity findByName(String hospital_name);
+
 }

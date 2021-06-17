@@ -1,7 +1,7 @@
-package com.banfico.hospital_management.ExceptionHandler;
+package com.banfico.hospital_management.ExceptionHandler.Hospital;
 
-public class NoDataFoundException extends RuntimeException{
-    public NoDataFoundException() {
-        super(String.format("No data found"));
+public class NoHospitalDataFoundException extends RuntimeException{
+    public NoHospitalDataFoundException() {
+        super(String.format("No hospital data found"));
     }
 }
