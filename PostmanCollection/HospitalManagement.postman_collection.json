@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "37db2015-7b1f-4ccc-9af3-653e5aaff098",
+		"name": "HospitalManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hospital",
+			"item": [
+				{
+					"name": "addNewHospital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"hospital_Id\":101,\n  \"hospital_name\": \"NMC\",\n  \"hospital_address\": \"efg address\",\n  \"hospital_emergencyNo\": 912,\n  \"hospital_mailId\": \"nmcHospital@nmc.com\",\n  \"hospitalResourcesEntity\": {\n    \"resource_Id\":14,\n    \"bedsAvailable\": 180,\n    \"bedsInUse\": 220\n  },\n  \"healthCareBranchEntity\": {\n    \"branch_Id\":15,\n    \"branch_name\": \"Neuroscience\",\n    \"branch_floorNo\": 6\n  },\n  \"doctorEntity\": [\n    {\n      \"doctor_Id\":23,\n      \"doctor_name\": \"Dr. Ritwik\",\n      \"doctor_designation\": \"HOD\",\n      \"doctor_degree\": \"MBBS\",\n      \"doctor_address\": \"def doctor Address\",\n      \"doctor_emailId\": \"ritwik@nmc.com\",\n      \"doctor_contactNo\":\"78xxxxxxxx\",\n      \"patientEntity\":[\n          {\n          \"patient_Id\":25,\n          \"patient_name\": \"Nikita\",\n          \"patient_contactNumber\": \"90xxxxxxxx\",\n          \"patient_addres\": \"abc patient address\",\n          \"patient_gender\": \"Female\",\n          \"patient_emailId\": \"ayesha@gmail.com\",\n          \"patient_address\":\"ytujhgsj jhgshgf hh\",\n          \"patient_DOB\": \"05-12-1997\",\n          \"patient_In\": \"\",\n          \"billingEntity\": {\n            \"bill_Id\":2,\n            \"medicine\": \"Paracetamol\",\n            \"quantity\": 3,\n            \"unitValue\": 50.4\n          }\n      }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/hospital/details",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"hospital",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHospitals",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/hospital/details",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"hospital",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHospital",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"hospital_Id\":101,\n  \"hospital_name\": \"NMC\",\n  \"hospital_address\": \"efg address\",\n  \"hospital_emergencyNo\": 912,\n  \"hospital_mailId\": \"nmcHospital@nmc.com\",\n  \"hospitalResourcesEntity\": {\n    \"resource_Id\":11,\n    \"bedsAvailable\": 180,\n    \"bedsInUse\": 220\n  },\n  \"healthCareBranchEntity\": {\n    \"branch_Id\":12,\n    \"branch_name\": \"Neuroscience\",\n    \"branch_floorNo\": 6\n  },\n  \"doctorEntity\": [\n    {\n      \"doctor_Id\":20,\n      \"doctor_name\": \"Dr. Ritwik\",\n      \"doctor_designation\": \"HOD\",\n      \"doctor_degree\": \"MBBS\",\n      \"doctor_address\": \"def doctor Address\",\n      \"doctor_emailId\": \"ritwik@nmc.com\",\n      \"doctor_contactNo\":\"78xxxxxxxx\",\n      \"patientEntity\":[\n          {\n          \"patient_Id\":21,\n          \"patient_name\": \"Nikita\",\n          \"patient_contactNumber\": \"90xxxxxxxx\",\n          \"patient_addres\": \"abc patient address\",\n          \"patient_gender\": \"Female\",\n          \"patient_emailId\": \"ayesha@gmail.com\",\n          \"patient_address\":\"ytujhgsj jhgshgf hh\",\n          \"patient_DOB\": \"05-12-1997\",\n          \"patient_In\": \"\",\n          \"billingEntity\": {\n            \"bill_Id\":19,\n            \"medicine\": \"Paracetamol\",\n            \"quantity\": 3,\n            \"unitValue\": 50.4\n          }\n      }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/hospital/details",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"hospital",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteHospitalsById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/hospital/details/102",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"hospital",
+								"details",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHospitalById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "addNewHospital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctor",
+			"item": [
+				{
+					"name": "getDoctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/doctors/details/23",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"doctors",
+								"details",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AssignPatient",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"doctor_Id\":25,\n      \"doctor_name\": \"Dr. Ritik\",\n      \"doctor_designation\": \"HOD\",\n      \"doctor_degree\": \"MBBS\",\n      \"doctor_address\": \"ABC doctor Address\",\n      \"doctor_emailId\": \"ritwik@nmc.com\",\n      \"doctor_contactNo\":\"78xxxxxxxx\",\n      \"hospitalEntity\":{\n          \"hospital_Id\":102\n      },\n      \"patientEntity\":[\n          {\n          \"patient_Id\":26,\n          \"patient_name\": \"Nik\",\n          \"patient_contactNumber\": \"90xxxxxxxx\",\n          \"patient_addres\": \"abc patient address\",\n          \"patient_gender\": \"Female\",\n          \"patient_emailId\": \"ayesha@gmail.com\",\n          \"patient_address\":\"ytujhgsj jhgshgf hh\",\n          \"patient_DOB\": \"05-12-1997\",\n          \"patient_In\": \"\",\n          \"billingEntity\": {\n            \"bill_Id\":23,\n            \"medicine\": \"Paracetamol\",\n            \"quantity\": 3,\n            \"unitValue\": 50.4\n          }\n      }      \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/doctors/detail",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"doctors",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoctorById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/doctors/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDoctorAndPatientTogether",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "getDoctorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/doctors/detail/25",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"doctors",
+								"detail",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateDoctor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"doctor_Id\":19,\n      \"doctor_name\": \"Dr. Revu\",\n      \"doctor_designation\": \"HOD\",\n      \"doctor_degree\": \"MBBS\",\n      \"doctor_address\": \"def doctor Address\",\n      \"doctor_emailId\": \"ritwik@nmc.com\",\n      \"doctor_contactNo\":\"78xxxxxxxx\",\n      \"patientEntity\":[\n          {\n          \"patient_Id\":29,\n          \"patient_name\": \"Nik\",\n          \"patient_contactNumber\": \"90xxxxxxxx\",\n          \"patient_addres\": \"abc patient address\",\n          \"patient_gender\": \"Female\",\n          \"patient_emailId\": \"ayesha@gmail.com\",\n          \"patient_address\":\"ytuj jhgshgf hh\",\n          \"patient_DOB\": \"05-12-1997\",\n          \"patient_In\": \"\",\n          \"billingEntity\": {\n            \"bill_Id\":26,\n            \"medicine\": \"Paracetamol\",\n            \"quantity\": 3,\n            \"unitValue\": 52.4\n          }\n      }\n      ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/doctors/detail?doctor_Id=19",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"doctors",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "doctor_Id",
+									"value": "19"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "getPatients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/hospital/patient/26",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"hospital",
+								"patient",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePatient",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_Id\":26,\n    \"patient_name\": \"Nikita\",\n    \"patient_contactNumber\": \"90xxxxxxxx\",\n    \"patient_addres\": \"abc patient address\",\n    \"patient_gender\": \"Female\",\n    \"patient_emailId\": \"ayesha@gmail.com\",\n    \"patient_address\":\"ytuj jhgshgf hh\",\n    \"patient_DOB\": \"05-12-1997\",\n    \"patient_In\": \"\",\n    \"billingEntity\": {\n        \"bill_Id\":23,\n        \"medicine\": \"Paracetamol\",\n        \"quantity\": 3,\n        \"unitValue\": 52.4\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/hospital-management/api/patient/detail",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"hospital-management",
+								"api",
+								"patient",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePatient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "getPatientById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "addPatient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
