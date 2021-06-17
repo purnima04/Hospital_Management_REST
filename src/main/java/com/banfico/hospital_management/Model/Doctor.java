@@ -1,14 +1,13 @@
 package com.banfico.hospital_management.Model;
 
-import com.banfico.hospital_management.Entity.AuditEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @Data
 @MappedSuperclass
-public class Doctor extends AuditEntity {
+public class Doctor{
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int doctor_Id;
