@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping(API_paths.hospitalPathCtrl.CTRL)
 public class HospitalController {
-    
+
     @Autowired
     private HospitalService hospitalService;
 
@@ -34,7 +34,14 @@ public class HospitalController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public HospitalEntity updateHospital(@PathVariable(name = "hospital_Id", required = true) int hospital_Id,
                                          @Valid @RequestBody HospitalEntity hospitalEntity) {
-        //HospitalEntity hospitalFound = hospitalService.update(hospitalEntity);
+        return hospitalService.update(hospital_Id, hospitalEntity);
+    }
+
+    @PatchMapping(value = "/details",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public HospitalEntity assignDoctor(@RequestParam(name = "hospital_Id", required = true) int hospital_Id,
+                                     @Valid @RequestBody HospitalEntity hospitalEntity) {
         return hospitalService.update(hospital_Id, hospitalEntity);
     }
 
@@ -44,15 +51,9 @@ public class HospitalController {
         return new ResponseEntity<>(hospital, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/details/{hospital_Id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteHospital(@PathVariable int hospital_Id){
+    @RequestMapping(value = "/details", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteHospital(@RequestParam int hospital_Id){
         hospitalService.deleteHospital(hospital_Id);
-        return ResponseEntity.accepted().body("Successful deletion");
+        return ResponseEntity.accepted().body("Deleted hospital information successfully");
     }
-    /*@GetMapping(value = "/details/{hospital_name}")
-    public HospitalEntity getHospitalName(@PathVariable String hospital_name) {
-        return hospitalService.findByName(hospital_name);
-    }
-     */
-
 }
