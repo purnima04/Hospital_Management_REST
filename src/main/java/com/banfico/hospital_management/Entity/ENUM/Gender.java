@@ -1,4 +1,4 @@
-package com.banfico.hospital_management.Entity.ENUM;
+package com.banfico.hospital_management.Entity.Enum;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -10,7 +10,7 @@ public enum Gender {
     }
 
     @JsonValue
-    public String value(){
+    public String value() {
         return value;
     }
 }

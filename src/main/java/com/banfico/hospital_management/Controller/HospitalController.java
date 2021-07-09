@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -41,7 +40,7 @@ public class HospitalController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public HospitalEntity assignDoctor(@RequestParam(name = "hospital_Id", required = true) int hospital_Id,
-                                     @Valid @RequestBody HospitalEntity hospitalEntity) {
+                                       @Valid @RequestBody HospitalEntity hospitalEntity) {
         return hospitalService.update(hospital_Id, hospitalEntity);
     }
 

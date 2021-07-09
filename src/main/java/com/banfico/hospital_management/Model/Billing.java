@@ -1,14 +1,22 @@
 package com.banfico.hospital_management.Model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @MappedSuperclass
 public class Billing{
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bill_Id;
+    /*private String medicine;
+    private int quantity;
+    private double unitValue;
+    private PatientEntity patientEntity;*/
 }

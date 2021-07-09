@@ -1,6 +1,6 @@
 package com.banfico.hospital_management.Entity;
 
-import com.banfico.hospital_management.Entity.ENUM.Branches;
+import com.banfico.hospital_management.Entity.Enum.Branches;
 import com.banfico.hospital_management.Model.HealthCareBranch;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

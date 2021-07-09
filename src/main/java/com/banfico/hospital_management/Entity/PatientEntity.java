@@ -1,10 +1,13 @@
 package com.banfico.hospital_management.Entity;
 
-import com.banfico.hospital_management.Entity.ENUM.Gender;
+import com.banfico.hospital_management.Entity.Enum.Gender;
 import com.banfico.hospital_management.Model.Patient;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -51,13 +54,13 @@ public class PatientEntity extends Patient {
     @JsonFormat(pattern = "dd-mm-yyyy")
     private Date patient_DOB;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "PATIENT_IN_TIME", updatable = false, nullable = false)
-    @CreatedDate
+    @CreationTimestamp
     private Date patient_In;
 
     //@ManyToMany(targetEntity = DoctorEntity.class, cascade = {CascadeType.REFRESH, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REFRESH})
-    @ManyToOne(cascade = CascadeType.PERSIST, targetEntity = DoctorEntity.class)
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = DoctorEntity.class)
     @JoinColumn(name = "doctorRef", referencedColumnName = "doctor_Id")
     @JsonBackReference
     private DoctorEntity doctorEntity;

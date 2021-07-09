@@ -56,7 +56,7 @@ public class DoctorEntity extends Doctor {
     //@ManyToMany(targetEntity = PatientEntity.class, mappedBy = "doctorEntity", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     */
     @OneToMany(mappedBy = "doctorEntity",
-            cascade = CascadeType.PERSIST,
+            cascade = CascadeType.ALL,
             targetEntity = PatientEntity.class)
     @JsonManagedReference
     private List<PatientEntity> patientEntity;

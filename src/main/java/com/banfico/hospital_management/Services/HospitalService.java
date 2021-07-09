@@ -24,6 +24,149 @@ import java.util.Optional;
 
 @Service
 public class HospitalService implements HospitalServiceInterface{
+/*
+    @Autowired
+    private ModelMapper modelMapper;
+
+    //-----------------------------------------------HOSPITAL-------------------------------------------------------
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
+    @Override
+    public Hospital findById(int hospital_Id) throws Exception {
+        Optional<HospitalEntity> optionalHospitalEntity=hospitalRepository.findById(hospital_Id);
+        if (optionalHospitalEntity.isPresent()){
+            optionalHospitalEntity.get().getDoctorEntity();
+            Hospital hospital=modelMapper.map(optionalHospitalEntity.get(), Hospital.class);
+            return hospital;
+        }else {
+            throw new HospitalNotFoundException("Not found");
+        }
+    }
+
+    @Override
+    public HospitalEntity addHospital(HospitalEntity hospitalEntity) {
+        hospitalEntity=hospitalRepository.save(hospitalEntity);
+        if (hospitalEntity.getHospital_Id()>-1)
+            return hospitalEntity;
+        else {
+            throw new NoHospitalDataFoundException();
+        }
+    }
+
+    @Override
+    public List<Hospital> findAll() throws Exception {
+        try{
+            List<HospitalEntity> hospitalEntityList =hospitalRepository.findAll();
+            if (hospitalEntityList.size()<1)
+                throw new HospitalNotFoundException("List of hospital is Empty");
+            Hospital[] hospitals=modelMapper.map(hospitalEntityList, Hospital[].class);
+            List<Hospital> hospitalList= Arrays.asList(hospitals);
+            hospitalList.forEach(hospital -> {
+                hospital.getHospitalResourcesEntity().setResource_Id(hospital.getHospital_Id());
+                hospital.getDoctorEntity().forEach(doctorEntity -> {
+                    doctorEntity.setDoctor_Id(hospital.getHospital_Id());
+                });
+            });
+            return Arrays.asList(hospitals);
+        }catch (Exception e){
+            throw new Exception(e);
+        }
+    }
+
+    @Override
+    public Hospital update(int hospital_Id, HospitalEntity hospitalEntity) {
+        Optional<HospitalEntity> hospitalEntityOptional=hospitalRepository.findById(hospital_Id);
+        if (hospitalEntityOptional.isPresent()){
+            hospitalEntity.setHospital_Id(hospital_Id);
+            hospitalRepository.save(hospitalEntity);
+            Hospital hospital=modelMapper.map(hospitalEntityOptional.get(), Hospital.class);
+            return hospital;
+        }
+        else {
+            throw new HospitalNotFoundException("Not found");
+        }
+    }
+
+    @Override
+    public String delete(@Valid int hospital_Id) {
+        hospitalRepository.deleteById(hospital_Id);
+        return "Successful deletion";
+    }
+
+    //------------------------------------------------DOCTOR-------------------------------------------------------
+
+    @Autowired
+    private DoctorRepository doctorRepository;
+
+    @Override
+    public List<Doctor> findAllDoctor() throws Exception {
+        try{
+            List<DoctorEntity> doctorEntityList =doctorRepository.findAll();
+            if (doctorEntityList.size()<1)
+                throw new DoctorNotFoundException("List of doctors is Empty");
+           Doctor[] doctors=modelMapper.map(doctorEntityList, Doctor[].class);
+            List<Doctor> doctorList= Arrays.asList(doctors);
+            doctorList.forEach(doctor -> {
+                doctor.getPatientEntity().forEach(patientEntity -> {
+                    patientEntity.setPatient_Id(doctor.getDoctor_Id());
+                });
+                doctor.getHospitalEntity().setHospital_Id(doctor.getDoctor_Id());
+            });
+            return Arrays.asList(doctors);
+        }catch (Exception e){
+            throw new Exception(e);
+        }
+    }
+
+/*
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
+    @Override
+    public List<HospitalEntity> getAllHospital() {
+        return hospitalRepository.findAll();
+    }
+
+    @Override
+    public HospitalEntity addHospital(HospitalEntity hospitalEntity) {
+        return hospitalRepository.save(hospitalEntity);
+    }
+
+    @Override
+    public HospitalEntity updateHospital(int hospital_Id, HospitalEntity hospitalEntity) {
+        HospitalEntity hospitalEntity1 =hospitalRepository.findById(hospital_Id)
+                .orElseThrow(() -> new HospitalNotFoundException("Not found"));
+
+        hospitalEntity1.setHospital_Id(hospitalEntity.getHospital_Id());
+        hospitalEntity1.setHospital_name(hospitalEntity.getHospital_name());
+        hospitalEntity1.setHospital_address(hospitalEntity.getHospital_address());
+        hospitalEntity1.setHospital_mailId(hospitalEntity.getHospital_mailId());
+        hospitalEntity1.setHospital_emergencyNo(hospitalEntity.getHospital_emergencyNo());
+        hospitalEntity1.setHospitalResourcesEntity(hospitalEntity.getHospitalResourcesEntity());
+        hospitalEntity1.setHealthCareBranchEntity(hospitalEntity.getHealthCareBranchEntity());
+        hospitalEntity1.setDoctorEntity(hospitalEntity.getDoctorEntity());
+        return hospitalRepository.save(hospitalEntity);
+    }
+
+    @Override
+    public void deleteHospital(int hospital_Id) {
+        HospitalEntity hospitalEntity = hospitalRepository.findById(hospital_Id)
+                .orElseThrow(() -> new NoHospitalDataFoundException());
+        hospitalRepository.delete(hospitalEntity);
+    }
+
+    @Override
+    public HospitalEntity getHospitalById(int hospital_Id) {
+        Optional<HospitalEntity> hospitalEntityOptional = hospitalRepository.findById(hospital_Id);
+        if(hospitalEntityOptional.isPresent()) {
+            return hospitalEntityOptional.get();
+        }else {
+            throw new HospitalNotFoundException("Not found");
+        }
+    }
+ */
+
     @Autowired
     private HospitalRepository hospitalRepository;
 
@@ -68,6 +211,7 @@ public class HospitalService implements HospitalServiceInterface{
         hospitalRepository.deleteById(hospital_Id);
         return "Successful deletion";
     }
+
 
     //------------------------------------------------DOCTOR-------------------------------------------------------
 
@@ -142,4 +286,5 @@ public class HospitalService implements HospitalServiceInterface{
         patientRepository.deleteById(patient_Id);
         return "Successful deletion";
     }
+
 }

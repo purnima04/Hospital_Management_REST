@@ -1,0 +1,32 @@
+= Hospital Management
+
+Documentation is available at
+http://localhost:8089/hospital-management/v2/api-docs
+
+== Build
+[source,bash]
+----
+mvn clean install -DskipTests
+----
+[source,bash]
+----
+docker-compose up build
+----
+== Running in local
+
+==== Prerequisite(s)
+. have your JAVA_HOME set to JAVA 11 or Zulu 11.
+. have Docker installed in your local
+
+
+==== Get Started
+. have built `Hospital-Management` project in `postgres` docker environment (to ensure images are in `postgres` registry) - requires `postgres start` to already have been done and then run it using build commands
+. Check all the containers are up by running `docker dashboard`
+
+==== Port for Postgres and tomcat server
+. `docker images port forward hospital-management-cpostgres 5432:5432`
+. `docker images port forward hospital-management-itomcat 8089:8080`
+
+==== Testing through swagger
+. Once all the pods are up, we can test through: http://localhost:8089/hospital-management/swagger-ui.html#/
+

@@ -1,14 +1,27 @@
 package com.banfico.hospital_management.Model;
 
-import com.banfico.hospital_management.Entity.AuditEntity;
-import lombok.Data;
-import javax.persistence.*;
-import java.sql.Timestamp;
+import lombok.*;
 
-@Data
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @MappedSuperclass
-public class Patient extends AuditEntity{
+public class Patient{
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patient_Id;
+    /*private String patient_name;
+    private String patient_contactNumber;
+    private String patient_address;
+    private PatientEntity.Gender patient_gender;
+    private String patient_emailId;
+    private Date patient_DOB;
+    private Date patient_In;
+    private DoctorEntity doctorEntity;
+    private BillingEntity billingEntity;*/
 }

@@ -1,14 +1,21 @@
 package com.banfico.hospital_management.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @MappedSuperclass
 public class HealthCareBranch {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int branch_Id;
+    /*private Branches branch_name;
+    private int branch_floorNo;
+    private HospitalEntity hospitalEntity;*/
 }

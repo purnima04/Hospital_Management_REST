@@ -39,7 +39,7 @@ public class PatientController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public PatientEntity updatePatient(@RequestParam(name = "patient_Id", required = true) int patient_Id,
-                                         @Valid @RequestBody PatientEntity patientEntity) {
+                                       @Valid @RequestBody PatientEntity patientEntity) {
         return hospitalService.updatePatient(patient_Id, patientEntity);
     }
 

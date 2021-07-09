@@ -43,7 +43,7 @@ public class HospitalEntity extends Hospital {
     private HealthCareBranchEntity healthCareBranchEntity;
 
     @OneToMany(mappedBy = "hospitalEntity",
-            cascade = CascadeType.PERSIST,
+            cascade = CascadeType.ALL,
             targetEntity = DoctorEntity.class)
     @JsonManagedReference
     private List<DoctorEntity> doctorEntity;

@@ -1,4 +1,4 @@
-package com.banfico.hospital_management.Entity.ENUM;
+package com.banfico.hospital_management.Entity.Enum;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
